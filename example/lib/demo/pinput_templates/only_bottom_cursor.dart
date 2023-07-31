@@ -50,19 +50,19 @@ class _OnlyBottomCursorState extends State<OnlyBottomCursor> {
         ),
       ],
     );
-    final preFilledWidget = Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Container(
-          width: 56,
-          height: 3,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-      ],
-    );
+    Column preFilledWidgetBuilder(index) => Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              width: 56,
+              height: 3,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          ],
+        );
 
     return Pinput(
       length: 5,
@@ -72,7 +72,7 @@ class _OnlyBottomCursorState extends State<OnlyBottomCursor> {
       defaultPinTheme: defaultPinTheme,
       showCursor: true,
       cursor: cursor,
-      preFilledWidget: preFilledWidget,
+      preFilledWidgetBuilder: preFilledWidgetBuilder,
     );
   }
 }
