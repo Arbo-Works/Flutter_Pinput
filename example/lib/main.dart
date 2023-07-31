@@ -88,6 +88,21 @@ class _PinputExampleState extends State<PinputExample> {
               //   debugPrint('onClipboardFound: $value');
               //   pinController.setText(value);
               // },
+              preFilledWidget: (index) {
+                if (index == 0) {
+                  return Container(width: 20, height: 20, color: Colors.orange);
+                }
+                if (index == 1) {
+                  return Container(width: 20, height: 20, color: Colors.red);
+                }
+                if (index == 2) {
+                  return Container(width: 20, height: 20, color: Colors.purple);
+                }
+                if (index == 3) {
+                  return Container(width: 20, height: 20, color: Colors.yellow);
+                }
+                return Container(width: 20, height: 20, color: Colors.lime);
+              },
               hapticFeedbackType: HapticFeedbackType.lightImpact,
               onCompleted: (pin) {
                 debugPrint('onCompleted: $pin');
