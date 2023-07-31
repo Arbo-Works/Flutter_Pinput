@@ -60,7 +60,7 @@ class Pinput extends StatefulWidget {
     this.onLongPress,
     this.controller,
     this.focusNode,
-    this.preFilledWidget,
+    this.preFilledWidgetBuilder,
     this.separatorPositions,
     this.separator = PinputConstants._defaultSeparator,
     this.smsCodeMatcher = PinputConstants.defaultSmsCodeMatcher,
@@ -201,7 +201,7 @@ class Pinput extends StatefulWidget {
   final FocusNode? focusNode;
 
   /// Widget that is displayed before field submitted.
-  final Widget? preFilledWidget;
+  final Widget Function(int index)? preFilledWidgetBuilder;
 
   /// Sets the positions where the separator should be shown
   final List<int>? separatorPositions;
@@ -490,9 +490,9 @@ class Pinput extends StatefulWidget {
       ),
     );
     properties.add(
-      DiagnosticsProperty<Widget?>(
-        'preFilledWidget',
-        preFilledWidget,
+      DiagnosticsProperty<Widget Function(int index)?>(
+        'preFilledWidgetBuilder',
+        preFilledWidgetBuilder,
         defaultValue: null,
       ),
     );

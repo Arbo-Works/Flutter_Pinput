@@ -14,7 +14,6 @@
  </div>
 <!--  Donations -->
 
-
 [![Pub package](https://img.shields.io/pub/v/pinput.svg)](https://pub.dev/packages/pinput)
 [![Github starts](https://img.shields.io/github/stars/tkko/flutter_pinput.svg?style=flat&logo=github&colorB=deeppink&label=stars)](https://github.com/tkko/flutter_pinput)
 [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart)
@@ -27,6 +26,7 @@ Flutter Pinput is a package that provides an easy-to-use and customizable Pin co
 **If you are using Flutter version <3.7.0 you have to use Pinput version 2.2.21**
 
 ## Features:
+
 - Animated Decoration Switching
 - Form validation
 - SMS Autofill on iOS
@@ -55,12 +55,12 @@ Don't forget to give it a star ⭐
 
 ## Demo
 
-| [Live Demo](https://rebrand.ly/6390b8) | Rounded With Shadows | Rounded With Cursor |
-| - | - | - |
+| [Live Demo](https://rebrand.ly/6390b8)                                                                                                                                 | Rounded With Shadows                                                                                                           | Rounded With Cursor                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://rebrand.ly/6390b8"><img width="300" src="https://user-images.githubusercontent.com/26390946/155666045-aa93bf48-f8e7-407c-bb19-bc247d9e12bd.png"/></a> | <img width="300" src="https://user-images.githubusercontent.com/26390946/155599527-fe934f2c-5124-4754-bbf6-bb97d55a77c0.gif"/> | <img width="300" src="https://user-images.githubusercontent.com/26390946/155599870-03387689-7be2-4a30-8e6f-90136a0515be.gif"/> |
 
-| Rounded Filled | With Bottom Cursor | Filled |
-| - | - | - |
+| Rounded Filled                                                                                                                 | With Bottom Cursor                                                                                                             | Filled                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | <img width="300" src="https://user-images.githubusercontent.com/26390946/155600099-d0a02f55-09e6-4142-92de-066cd71cf211.gif"/> | <img width="300" src="https://user-images.githubusercontent.com/26390946/155600276-0380b3b4-3d9c-4ea8-87d0-4f7ebd86e460.gif"/> | <img width="300" src="https://user-images.githubusercontent.com/26390946/155600427-901c1eae-e565-4cf8-a338-8ac40eb1149c.gif"/> |
 
 ## Getting Started
@@ -69,9 +69,8 @@ The pin has 6 states `default` `focused`, `submitted`, `following`, `disabled`, 
 Pin smoothly animates from one state to another automatically.
 `PinTheme Class`
 
-
 | Property    |    Default/Type    |
-|-------------|:------------------:|
+| ----------- | :----------------: |
 | width       |        56.0        |
 | height      |        60.0        |
 | textStyle   |    TextStyle()     |
@@ -165,14 +164,17 @@ Works out of the box, by tapping the code on top of the keyboard
 ### Android
 
 If you are using [firebase_auth](https://firebase.flutter.dev/docs/auth/phone#verificationcompleted) you have to set `androidSmsAutofillMethod` to `AndroidSmsAutofillMethod.none` and set `controller'`s value in `verificationCompleted` callback, here is an example code:
-``` dart
+
+```dart
     Pinput(
       androidSmsAutofillMethod: AndroidSmsAutofillMethod.none,
       controller: pinController,
     );
 ```
+
 And set pinController's value in `verificationCompleted` callback:
-``` dart
+
+```dart
     await FirebaseAuth.instance.verifyPhoneNumber(
       verificationCompleted: (PhoneAuthCredential credential) {
         pinController.setText(credential.smsCode);
@@ -182,7 +184,9 @@ And set pinController's value in `verificationCompleted` callback:
       codeAutoRetrievalTimeout: (String verificationId) {},
     );
 ```
+
 ---
+
 If you aren't using firebase_auth, you have two options, [SMS Retriever API](https://developers.google.com/identity/sms-retriever/overview?hl=en) and [SMS User Consent API](https://developers.google.com/identity/sms-retriever/user-consent/overview),
 
 [SmartAuth](https://github.com/Tkko/flutter_smart_auth) is a wrapper package for Flutter for these APIs and it is behind the autofill support of Pinput
@@ -229,42 +233,42 @@ Also, you can suggest a phone number by showing native Android dialog.
 - #### Controller
 
 ```dart
-/// Create Controller  
-final pinController = TextEditingController();  
+/// Create Controller
+final pinController = TextEditingController();
 
-/// Set text programmatically  
-pinController.setText('1222');  
+/// Set text programmatically
+pinController.setText('1222');
 
-/// Append typed character, useful if you are using custom keyboard  
-pinController.append('1', 4);  
+/// Append typed character, useful if you are using custom keyboard
+pinController.append('1', 4);
 
-/// Delete last character  
-pinController.delete();  
+/// Delete last character
+pinController.delete();
 
-/// Don't call setText, append, delete in build method, this is just illustration.  
+/// Don't call setText, append, delete in build method, this is just illustration.
 
-return Pinput(  
-  controller: pinController,  
-);  
+return Pinput(
+  controller: pinController,
+);
 ```
 
 - #### Focus
 
 ```dart
-/// Create FocusNode  
-final pinputFocusNode = FocusNode();  
+/// Create FocusNode
+final pinputFocusNode = FocusNode();
 
-/// Focus pinput  
-pinputFocusNode.requestFocus();  
+/// Focus pinput
+pinputFocusNode.requestFocus();
 
-/// UnFocus pinput  
-pinputFocusNode.unfocus();  
+/// UnFocus pinput
+pinputFocusNode.unfocus();
 
-/// Don't call requestFocus, unfocus in build method, this is just illustration.  
+/// Don't call requestFocus, unfocus in build method, this is just illustration.
 
-return Pinput(  
-  focusNode: pinputFocusNode,  
-);  
+return Pinput(
+  focusNode: pinputFocusNode,
+);
 ```
 
 - #### Validation
@@ -313,12 +317,13 @@ return Form(
 #### are you using firebase_auth?
 
 Set `androidSmsAutofillMethod` to `AndroidSmsAutofillMethod.none` and set `controller'`s value in `verificationCompleted` callback, here is an example code:
-``` dart
+
+```dart
     Pinput(
       androidSmsAutofillMethod: AndroidSmsAutofillMethod.none,
       controller: pinController,
     );
-    
+
     await FirebaseAuth.instance.verifyPhoneNumber(
       verificationCompleted: (PhoneAuthCredential credential) {
         pinController.setText(credential.smsCode);
@@ -330,7 +335,8 @@ Set `androidSmsAutofillMethod` to `AndroidSmsAutofillMethod.none` and set `contr
 ```
 
 ## Properties
-```dart
+
+````dart
 class Pinput extends StatefulWidget {
   const Pinput({
     this.length = PinputConstants._defaultLength,
@@ -347,7 +353,7 @@ class Pinput extends StatefulWidget {
     this.onLongPress,
     this.controller,
     this.focusNode,
-    this.preFilledWidget,
+    this.preFilledWidgetBuilder,
     this.separatorPositions,
     this.separator = PinputConstants._defaultSeparator,
     this.smsCodeMatcher = PinputConstants.defaultSmsCodeMatcher,
@@ -487,7 +493,7 @@ class Pinput extends StatefulWidget {
   final FocusNode? focusNode;
 
   /// Widget that is displayed before field submitted.
-  final Widget? preFilledWidget;
+  final Widget? preFilledWidgetBuilder;
 
   /// Sets the positions where the separator should be shown
   final List<int>? separatorPositions;
@@ -642,4 +648,4 @@ class Pinput extends StatefulWidget {
   /// although it will be within the region of one of the group members.
   /// This is useful if you want to unfocus the [Pinput] when user taps outside of it
   final TapRegionCallback? onTapOutside;
-```
+````
